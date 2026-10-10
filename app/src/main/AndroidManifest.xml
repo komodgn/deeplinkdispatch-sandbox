@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.DayNight">
+
+        <!-- Launcher: shows how to fire test deep links. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Single entry point for every deep link. DeepLinkDispatch routes from here. -->
+        <activity
+            android:name=".MainDeepLinkActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="sandbox" android:host="deeplink.example.com" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".DetailActivity" android:exported="false" />
+        <activity android:name=".ProfileActivity" android:exported="false" />
+
+    </application>
+</manifest>
